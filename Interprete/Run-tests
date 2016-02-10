@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cd "$(dirname "$0")"
+if ocaml -w -26 Tests.ml; then
+  echo "Test concluso con successo"
+else
+  echo "Test FALLITO"
+fi

@@ -1,0 +1,26 @@
+#!/usr/bin/expect -f
+
+# Cambia la cartella corrente al path di questo script
+cd [file dirname $argv0]
+
+# Avvia il toplevel ocaml
+spawn -noecho ocaml
+
+# Attende il prompt di ocaml
+expect "# "
+
+# Invia i comandi per caricare il codice
+send "#use \"SyntacticDomains.ml\";;"
+send "\n"
+expect "# "
+send "#use \"SemanticDomains.ml\";;"
+send "\n"
+expect "# "
+send "#use \"SemanticFunctions.ml\";;"
+send "\n"
+expect "# "
+
+# Ritorna il controllo del toplevel all'utente
+interact
+
+exit
